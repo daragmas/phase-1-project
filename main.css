@@ -31,3 +31,10 @@ border: 1px solid black;
     transform: scale(1.05);
     cursor: pointer;
 }
+
+main{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,9 +1,11 @@
 const zipCodeForm = document.getElementById('zipcode-form')
 const breweryList = document.getElementById('brewery-list')
+const favSelector = document.getElementById('fav-selector')
 
 let lat
 let long
 let zip
+let faves
 
 const getData = async (url) => {
     req = await fetch(url)
@@ -54,8 +56,16 @@ const makeBrewLi = (brewery) => {
 
 zipCodeForm.addEventListener('submit', async (e) => {
     e.preventDefault()
+    breweryList.innerHTML=''
     zip = zipCodeForm['zipcode-input'].value //put this in do/while so it doesn't continue if you enter letters or number too long to be a zip code
     let latLong = await getLatLong(zip)
     let breweries = await getBreweries(latLong)
     breweries.map((brewery) => makeBrewLi(brewery))
+})
+
+
+document.addEventListener('load',async ()=>{
+    faves = await fetch('http://localhost:3000')
+    
+
 })

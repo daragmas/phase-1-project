@@ -1,0 +1,10 @@
+{
+    "favorites": [
+        {
+            "id": 1,
+            "address" : "2 W 123rd St, New York, New York",
+            "phone" : "8885596735",
+            "url" : "http://www.harlembrewingcompany.com"
+        }
+    ]
+}
