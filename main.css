@@ -38,3 +38,7 @@ main{
     justify-content: center;
     align-items: center;
 }
+
+.something{
+    color: grey;
+}

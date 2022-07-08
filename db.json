@@ -1,10 +1,18 @@
 {
-    "favorites": [
-        {
-            "id": 1,
-            "address" : "2 W 123rd St, New York, New York",
-            "phone" : "8885596735",
-            "url" : "http://www.harlembrewingcompany.com"
-        }
-    ]
+  "favorites": [
+    {
+      "id": 1,
+      "name": "Harlem Brewing Company",
+      "address": "2 W 123rd St, New York, New York",
+      "phone": "8885596735",
+      "url": "http://www.harlembrewingcompany.com"
+    },
+    {
+      "name": "Fox N Hare Brewing Company",
+      "address": "46 Front St, Port Jervis, New York",
+      "phone": "3172095767",
+      "url": "http://www.foxnhare-brewing.com",
+      "id": 2
+    }
+  ]
 }

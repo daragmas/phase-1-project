@@ -1,6 +1,7 @@
 const zipCodeForm = document.getElementById('zipcode-form')
 const breweryList = document.getElementById('brewery-list')
 const favSelector = document.getElementById('fav-selector')
+const favesUrl = 'http://localhost:3000/favorites'
 
 let lat
 let long
@@ -26,6 +27,11 @@ const getBreweries = async (latLong) => {
 }
 
 const makeBrewLi = (brewery) => {
+    let faveDbInfo = { 
+        'name': brewery.name,
+        'address': `${brewery.street}, ${brewery.city}, ${brewery.state}` ,
+        'phone': brewery.phone,
+        'url': brewery.website_url}
 
     let collapsibleInfo = [
         { 'address': `${brewery.street}, ${brewery.city}, ${brewery.state}` },
@@ -49,7 +55,20 @@ const makeBrewLi = (brewery) => {
         collapseDiv.classList.toggle('hidden')
     })
 
-    li.appendChild(collapseDiv)
+    let faveBtn = document.createElement('ion-icon')
+    faveBtn.name = "heart"
+
+    console.log(faveDbInfo)
+
+    faveBtn.addEventListener('click',async ()=>{
+        fetch(favesUrl,{
+            method:'POST',
+            headers:{'Content-type':'application/json'},
+            body: JSON.stringify(faveDbInfo)
+        })
+    })
+
+    li.append(collapseDiv,faveBtn)
     breweryList.appendChild(li)
     li.addEventListener('click', () => { })
 }
@@ -63,9 +82,11 @@ zipCodeForm.addEventListener('submit', async (e) => {
     breweries.map((brewery) => makeBrewLi(brewery))
 })
 
-
-document.addEventListener('load',async ()=>{
-    faves = await fetch('http://localhost:3000')
-    
-
+window.addEventListener('load',async ()=>{
+    faves = await getData('http://localhost:3000/favorites')
+    faves.map((fave)=>{
+        let faveOption = document.createElement('option')
+        faveOption.innerText = fave.name
+        favSelector.appendChild(faveOption)
+    })
 })
