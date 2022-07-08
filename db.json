@@ -27,6 +27,27 @@
       "phone": "8452189156",
       "url": "http://www.hudsonvalleybrewery.com",
       "id": 5
+    },
+    {
+      "name": "Burnin Daylight Brewing Company",
+      "address": "null, Lomita, California",
+      "phone": "3107417621",
+      "url": null,
+      "id": 6
+    },
+    {
+      "name": "Alewife Brewing Company",
+      "address": "514 51st Ave, Long Island City, New York",
+      "phone": "7189377494",
+      "url": "http://www.alewife.beer",
+      "id": 7
+    },
+    {
+      "name": "Alewife Brewing Company",
+      "address": "514 51st Ave, Long Island City, New York",
+      "phone": "7189377494",
+      "url": "http://www.alewife.beer",
+      "id": 8
     }
   ]
 }

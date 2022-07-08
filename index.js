@@ -77,6 +77,7 @@ const makeBrewLi = (brewery) => {
                 method: 'DELETE'
             })
         }
+        setTimeout(() => { popFavesList() }, 500)
     })
 
     li.append(collapseDiv, faveBtn)
@@ -88,21 +89,27 @@ zipCodeForm.addEventListener('submit', async (e) => {
     e.preventDefault()
     breweryList.innerHTML = ''
     zip = zipCodeForm['zipcode-input'].value //put this in do/while so it doesn't continue if you enter letters or number too long to be a zip code
+    try{
     let latLong = await getLatLong(zip)
     let breweries = await getBreweries(latLong)
-    breweries.map((brewery) => makeBrewLi(brewery))
+    breweries.map((brewery) => makeBrewLi(brewery))}
+    catch{
+        alert('Invalid Zip Code. US Zip codes only (for now)')
+    }
 })
 
-window.addEventListener('load', async () => {
+const popFavesList = async () => {
+    favSelector.innerHTML = ''
     faves = await getData('http://localhost:3000/favorites')
     faves.map((fave) => {
         let faveOption = document.createElement('option')
         faveOption.innerText = fave.name
         favSelector.appendChild(faveOption)
     })
-})
+}
 
-favSelector.addEventListener('change',(e)=>{
-    preventDefault()
+favSelector.addEventListener('change',()=>{
     console.log('Hello')
 })
+
+popFavesList()
