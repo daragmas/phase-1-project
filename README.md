@@ -1,3 +1,7 @@
 # phase-1-project
 
-Does something with OpenBrewery API: https://www.openbrewerydb.org/documentation
+Gets local breweries from OpenBrewery, via Zippopotam
+
+OpenBrewery API: https://www.openbrewerydb.org/documentation
+
+Zippopotam http://www.zippopotam.us/
