@@ -12,14 +12,16 @@
     <title>Phase 1 Project</title>
 </head>
 <body>
-    <h1 id="title">Title</h1>
+    <div class="top-container">
+    <h1 id="title">Find Your Local Breweries</h1>
+    <p id="description">Type in you zip code and see the three nearest breweries</p>
     <form action="" id="zipcode-form">
-        <input type="text" id="zipcode-input">
-        <input type="submit" id="submit-zip-input" >
+        <input type="text" id="zipcode-input" placeholder="Enter your zip code">
+        <input type="submit" id="submit-zip-input" value="Locate" >
     </form>
-
+</div>
     <main id="main">
-        <h2>Breweries Near You</h2>
+        <h2 id="main-title">Breweries Near You</h2>
         <ul id="brewery-list" class="hidden">
         
         </ul>
