@@ -39,6 +39,10 @@ main{
     align-items: center;
 }
 
-.something{
-    color: grey;
+.liked{
+    color: red;
+}
+
+ion-icon{
+    color:grey
 }

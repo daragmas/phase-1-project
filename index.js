@@ -7,6 +7,7 @@ let lat
 let long
 let zip
 let faves
+let currentID
 
 const getData = async (url) => {
     req = await fetch(url)
@@ -17,7 +18,6 @@ const getLatLong = async (zip) => {
     const zipCodeApiUrl = `https://api.zippopotam.us/us/${zip}`
     const latAndLong = await getData(zipCodeApiUrl)
     latLong = [latAndLong.places[0].latitude, latAndLong.places[0].longitude]
-    // long = latAndLong.places[0].longitude
     return latLong
 }
 
@@ -27,11 +27,13 @@ const getBreweries = async (latLong) => {
 }
 
 const makeBrewLi = (brewery) => {
-    let faveDbInfo = { 
+    // console.log(brewery)
+    let faveDbInfo = {
         'name': brewery.name,
-        'address': `${brewery.street}, ${brewery.city}, ${brewery.state}` ,
+        'address': `${brewery.street}, ${brewery.city}, ${brewery.state}`,
         'phone': brewery.phone,
-        'url': brewery.website_url}
+        'url': brewery.website_url
+    }
 
     let collapsibleInfo = [
         { 'address': `${brewery.street}, ${brewery.city}, ${brewery.state}` },
@@ -51,42 +53,56 @@ const makeBrewLi = (brewery) => {
         collapseDiv.appendChild(infoLi)
     })
 
-    li.addEventListener('click',()=>{
+    li.addEventListener('click', () => {
         collapseDiv.classList.toggle('hidden')
     })
 
     let faveBtn = document.createElement('ion-icon')
     faveBtn.name = "heart"
 
-    console.log(faveDbInfo)
-
-    faveBtn.addEventListener('click',async ()=>{
-        fetch(favesUrl,{
-            method:'POST',
-            headers:{'Content-type':'application/json'},
-            body: JSON.stringify(faveDbInfo)
-        })
+    faveBtn.addEventListener('click', async () => {
+        if (!(faveBtn.classList.contains('liked'))) {
+            faveBtn.classList.toggle('liked')
+            fetch(favesUrl, {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(faveDbInfo)
+            })
+        }
+        else{
+            let deleteThisFave = await getData(`http://localhost:3000/favorites?name=${faveDbInfo.name}`)
+            let deleteID = deleteThisFave[0].id
+            faveBtn.classList.toggle('liked')
+            fetch(`http://localhost:3000/favorites/${deleteID}`, {
+                method: 'DELETE'
+            })
+        }
     })
 
-    li.append(collapseDiv,faveBtn)
+    li.append(collapseDiv, faveBtn)
     breweryList.appendChild(li)
     li.addEventListener('click', () => { })
 }
 
 zipCodeForm.addEventListener('submit', async (e) => {
     e.preventDefault()
-    breweryList.innerHTML=''
+    breweryList.innerHTML = ''
     zip = zipCodeForm['zipcode-input'].value //put this in do/while so it doesn't continue if you enter letters or number too long to be a zip code
     let latLong = await getLatLong(zip)
     let breweries = await getBreweries(latLong)
     breweries.map((brewery) => makeBrewLi(brewery))
 })
 
-window.addEventListener('load',async ()=>{
+window.addEventListener('load', async () => {
     faves = await getData('http://localhost:3000/favorites')
-    faves.map((fave)=>{
+    faves.map((fave) => {
         let faveOption = document.createElement('option')
         faveOption.innerText = fave.name
         favSelector.appendChild(faveOption)
     })
+})
+
+favSelector.addEventListener('change',(e)=>{
+    preventDefault()
+    console.log('Hello')
 })

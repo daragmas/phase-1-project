@@ -1,18 +1,32 @@
 {
   "favorites": [
     {
-      "id": 1,
-      "name": "Harlem Brewing Company",
-      "address": "2 W 123rd St, New York, New York",
-      "phone": "8885596735",
-      "url": "http://www.harlembrewingcompany.com"
-    },
-    {
       "name": "Fox N Hare Brewing Company",
       "address": "46 Front St, Port Jervis, New York",
       "phone": "3172095767",
       "url": "http://www.foxnhare-brewing.com",
       "id": 2
+    },
+    {
+      "name": "The Bronx Brewery",
+      "address": "856 E 136th St, Bronx, New York",
+      "phone": "7184021000",
+      "url": "http://www.thebronxbrewery.com",
+      "id": 3
+    },
+    {
+      "name": "Little Fish Brewing Company",
+      "address": "8675 Armitage Rd, Athens, Ohio",
+      "phone": "7402046187",
+      "url": "http://www.littlefishbrewing.com",
+      "id": 4
+    },
+    {
+      "name": "Hudson Valley Brewery",
+      "address": "7 E Main St, Beacon, New York",
+      "phone": "8452189156",
+      "url": "http://www.hudsonvalleybrewery.com",
+      "id": 5
     }
   ]
 }
