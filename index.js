@@ -5,7 +5,7 @@ let lat
 let long
 let zip
 
-const getData = async (url)=>{
+const getData = async (url) => {
     req = await fetch(url)
     return res = await req.json()
 }
@@ -23,58 +23,37 @@ const getBreweries = async (latLong) => {
     return breweriesData = await getData(breweryApiUrl)
 }
 
-const makeBrewLi = (brewery) =>{
+const makeBrewLi = (brewery) => {
+
+    let collapsibleInfo = [
+        { 'address': `${brewery.street}, ${brewery.city}, ${brewery.state}` },
+        { 'phone': brewery.phone },
+        { 'url': brewery.website_url }
+    ]
+
     let li = document.createElement('li')
     li.innerText = brewery.name
     let collapseDiv = document.createElement('div')
     collapseDiv.classList.add('hidden')
+    // console.log(collapsibleInfo)
 
-    let BrewInfoUl = document.createElement('ul')
-    let BrewInfo
-
-
-
-    li.addEventListener('click',()=>{})
+    collapsibleInfo.map((item) => {
+        let key = Object.keys(item)
+        console.log(item[key])
+        let infoLi = document.createElement('li')
+        infoLi.textContent = `${key} : ${item[key]}`
+        collapseDiv.appendChild(infoLi)
+    })
+    li.appendChild(collapseDiv)
+    breweryList.appendChild(li)
+    li.addEventListener('click', () => { })
 }
 
-/*address_2: null
-address_3: null
-brewery_type: "contract"
-city: "New York"
-country: "United States"
-county_province: null
-created_at: "2021-10-23T02:24:55.243Z"
-id: "harlem-brewing-co-new-york"
-latitude: "40.8058068"
-longitude: "-73.94532799"
-name: "Harlem Brewing Co"
-phone: "8885596735"
-postal_code: "10027-5623"
-state: "New York"
-street: "2 W 123rd St"
-updated_at: "2021-10-23T02:24:55.243Z"
-website_url: "http://www.harlembrewingcompany.com"*/
-
-zipCodeForm.addEventListener('submit', async (e)=>{
+zipCodeForm.addEventListener('submit', async (e) => {
     e.preventDefault()
     zip = zipCodeForm['zipcode-input'].value //put this in do/while so it doesn't continue if you enter letters or number too long to be a zip code
     let latLong = await getLatLong(zip)
     let breweries = await getBreweries(latLong)
-    console.log(breweries)
-    breweries.map((brewery)=>makeBrewLi(brewery))
+    // console.log(breweries)
+    breweries.map((brewery) => makeBrewLi(brewery))
 })
-
-
-/* 
-{
-    name : brewery.name
-    collapsible-content:[
-        {address: brewery.address}
-    ]
-}
-
-brewery[collapsible-conent].map((key,value) => { 
-    make line item
-    li
-}
-*/
