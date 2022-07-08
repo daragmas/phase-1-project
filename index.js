@@ -33,17 +33,20 @@ const makeBrewLi = (brewery) => {
 
     let li = document.createElement('li')
     li.innerText = brewery.name
-    let collapseDiv = document.createElement('div')
+    let collapseDiv = document.createElement('ul')
     collapseDiv.classList.add('hidden')
-    // console.log(collapsibleInfo)
 
     collapsibleInfo.map((item) => {
         let key = Object.keys(item)
-        console.log(item[key])
         let infoLi = document.createElement('li')
         infoLi.textContent = `${key} : ${item[key]}`
         collapseDiv.appendChild(infoLi)
     })
+
+    li.addEventListener('click',()=>{
+        collapseDiv.classList.toggle('hidden')
+    })
+
     li.appendChild(collapseDiv)
     breweryList.appendChild(li)
     li.addEventListener('click', () => { })
@@ -54,6 +57,5 @@ zipCodeForm.addEventListener('submit', async (e) => {
     zip = zipCodeForm['zipcode-input'].value //put this in do/while so it doesn't continue if you enter letters or number too long to be a zip code
     let latLong = await getLatLong(zip)
     let breweries = await getBreweries(latLong)
-    // console.log(breweries)
     breweries.map((brewery) => makeBrewLi(brewery))
 })
