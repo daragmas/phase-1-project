@@ -1,34 +1,52 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./main.css">
 
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./main.css" />
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <link rel="icon" href="./assets/beer-outline.svg">
+    <link rel="icon" href="./assets/beer-outline.svg" />
     <script async defer src="./index.js"></script>
     <title>Phase 1 Project</title>
 </head>
+
 <body>
-    <div class="top-container">
-    <h1 id="title">Find Your Local Breweries</h1>
-    <p id="description">Type in you zip code and see the three nearest breweries</p>
-    <form action="" id="zipcode-form">
-        <input type="text" id="zipcode-input" placeholder="Enter your zip code">
-        <input type="submit" id="submit-zip-input" value="Locate" >
-    </form>
-</div>
-    <main id="main">
-        <h2 id="main-title">Breweries Near You</h2>
-        <ul id="brewery-list"></ul>
-    </main>
+    <div class="background-div">
+        <div class="top-container">
+            <h1 id="title">Find Your Local Breweries</h1>
+            <p id="description">
+                Type in you zip code and see the three nearest breweries
+            </p>
+            <form action="" id="zipcode-form">
+                <input type="text" id="zipcode-input" placeholder="Enter your zip code" />
+                <input type="submit" id="submit-zip-input" value="Locate" />
+            </form>
+        </div>
+        <main id="main">
+            <h2 class="hidden" id="main-title">Breweries Near You</h2>
+            <ul id="brewery-list"></ul>
+        </main>
+    </div>
     <section id="fav-section">
         <h2 id="fav-title">Favorited Breweries</h2>
-        <select name="fav-selector" id="fav-selector">Select a Brewery</select>
+        <select name="fav-selector" id="fav-selector">
+        </select>
+        <div class="hidden fav-container">
+            <h3 id="fav-brew-name" ></h3>
+            <p id="fave-brew-phone" ></p>
+            <p id="fav-brew-address"></p>
+            <a href="" id="fave-brew-web" target="_blank" class="hidden">Visit Website</a>
+        </div>
     </section>
-
-
+    <footer>
+        <p>Copyright 2022: Nathaniel Wolf & Anastasia Sirman</p>
+    </footer>
 </body>
+
 </html>

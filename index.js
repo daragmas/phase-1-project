@@ -1,6 +1,12 @@
 const zipCodeForm = document.getElementById('zipcode-form')
 const breweryList = document.getElementById('brewery-list')
 const favSelector = document.getElementById('fav-selector')
+const favBrewTitle = document.getElementById('fav-brew-name')
+const favBrewPhone = document.getElementById('fave-brew-phone')
+const favBrewAddress = document.getElementById('fav-brew-address')
+const favBrewWeb = document.getElementById('fave-brew-web')
+const mainTitle = document.getElementById('main-title')
+const favDiv = document.getElementsByClassName('fav-container')
 const favesUrl = 'http://localhost:3000/favorites'
 
 let lat
@@ -87,6 +93,7 @@ const makeBrewLi = (brewery) => {
 
 zipCodeForm.addEventListener('submit', async (e) => {
     e.preventDefault()
+    mainTitle.classList.remove('hidden')
     breweryList.innerHTML = ''
     zip = zipCodeForm['zipcode-input'].value //put this in do/while so it doesn't continue if you enter letters or number too long to be a zip code
     try{
@@ -108,8 +115,22 @@ const popFavesList = async () => {
     })
 }
 
-favSelector.addEventListener('change',()=>{
-    console.log('Hello')
+const popFaveSection = (faveBrewObj) => {
+favBrewAddress.innerText = faveBrewObj[0].address
+favBrewPhone.innerText = faveBrewObj[0].phone
+favBrewWeb.href = faveBrewObj[0].url
+favBrewTitle.innerText = faveBrewObj[0].name
+}
+
+favSelector.addEventListener('change',async(e)=>{
+    let selectedFav = e.target.value
+    let val = await getData(`http://localhost:3000/favorites?name=${selectedFav}`)
+    popFaveSection(val)
+    favBrewWeb.classList.remove('hidden')
+    favDiv.classList.remove('hidden')
+    favBrewPhone.classList.remove('hidden')
+    favBrewTitle.classList.remove('hidden')
+    document.getElementById('fav-brew-address').classList.remove('hidden')
 })
 
 popFavesList()
