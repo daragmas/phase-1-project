@@ -13,6 +13,13 @@
       "phone": "7184021000",
       "url": "http://www.thebronxbrewery.com",
       "id": 3
+    },
+    {
+      "name": "LIC Beer Project",
+      "address": "3928 23rd St, Long Island City, New York",
+      "phone": "9178326840",
+      "url": "http://licbeerproject.com",
+      "id": 4
     }
   ]
 }
