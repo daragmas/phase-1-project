@@ -29,7 +29,6 @@ const getBreweries = async (latLong) => {
 }
 
 const makeBrewLi = (brewery) => {
-    // console.log(brewery)
     let faveDbInfo = {
         'name': brewery.name,
         'address': `${brewery.street}, ${brewery.city}, ${brewery.state}`,
@@ -47,6 +46,11 @@ const makeBrewLi = (brewery) => {
     li.innerText = brewery.name
     let collapseDiv = document.createElement('ul')
     collapseDiv.classList.add('hidden')
+
+    const collapseBtn = document.createElement('span')
+    collapseBtn.innerText = ' + '
+    collapseBtn .classList.toggle('active')
+    li.append(collapseBtn)
     
     collapsibleInfo.map((item) => {
         let key = Object.keys(item)
@@ -55,7 +59,7 @@ const makeBrewLi = (brewery) => {
         collapseDiv.appendChild(infoLi)
     })
     
-    li.addEventListener('click', () => {
+    collapseBtn.addEventListener('click', () => {
         collapseDiv.classList.toggle('hidden')
     })
     
@@ -82,7 +86,7 @@ const makeBrewLi = (brewery) => {
         setTimeout(() => { popFavesList() }, 500)
     })
     
-    li.append(collapseDiv, faveBtn)
+    li.append(faveBtn, collapseDiv)
     breweryList.appendChild(li)
     li.addEventListener('click', () => { })
 }
