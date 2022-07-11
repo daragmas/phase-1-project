@@ -21,7 +21,6 @@ const getLatLong = async (zip) => {
     const zipCodeApiUrl = `https://api.zippopotam.us/us/${zip}`
     const latAndLong = await getData(zipCodeApiUrl)
     latLong = [latAndLong.places[0].latitude, latAndLong.places[0].longitude]
-    mapFrame.setAttribute('src', `https://www.google.com/maps/embed/v1/view?key=AIzaSyDej2gyib9LdZv2wQO2_6MInDwv-glcoeE&center=${latLong[0]},${latLong[1]}&zoom=12&maptype=satellite`)
     return latLong
 }
 
@@ -62,9 +61,12 @@ const makeBrewLi = (brewery) => {
         infoLi.textContent = `${key} : ${item[key]}`
         collapseDiv.appendChild(infoLi)
     })
+
     
     collapseBtn.addEventListener('click', () => {
+        mapFrame.classList.remove('hidden')
         collapseDiv.classList.toggle('hidden')
+            mapFrame.setAttribute('src', `https://www.google.com/maps/embed/v1/place?key=AIzaSyDej2gyib9LdZv2wQO2_6MInDwv-glcoeE&q=${brewery.name.replace(' ', '+')}`)
     })
     
     let faveBtn = document.createElement('ion-icon')
@@ -131,6 +133,7 @@ const popFaveSection = (faveBrewObj) => {
     favBrewPhone.innerText = faveBrewObj[0].phone
     favBrewWeb.href = faveBrewObj[0].url
     favBrewWeb.textContent = 'Visit Website'
+    favBrewAddress.setAttribute('target', '_blank')
     favBrewTitle.innerText = faveBrewObj[0].name
     favDiv.append(favBrewTitle, favBrewAddress, favBrewPhone, favBrewWeb)
     container.append(favDiv)
