@@ -20,6 +20,8 @@ const getLatLong = async (zip) => {
     const zipCodeApiUrl = `https://api.zippopotam.us/us/${zip}`
     const latAndLong = await getData(zipCodeApiUrl)
     latLong = [latAndLong.places[0].latitude, latAndLong.places[0].longitude]
+    lati = latLong[0]
+    lngG = latAndLong[1]
     return latLong
 }
 
@@ -98,7 +100,7 @@ zipCodeForm.addEventListener('submit', async (e) => {
     mainTitle.classList.remove('hidden')
     breweryList.classList.remove('hidden')
     breweryList.innerHTML = ''
-    zip = zipCodeForm['zipcode-input'].value //put this in do/while so it doesn't continue if you enter letters or number too long to be a zip code
+    zip = zipCodeForm['zipcode-input'].value 
     try{
         let latLong = await getLatLong(zip)
         let breweries = await getBreweries(latLong)
@@ -142,7 +144,16 @@ favSelector.addEventListener('change',async(e)=>{
     popFaveSection(val)
 })
 
-
-
-
 popFavesList()
+
+
+/* 
+
+make map - hide map with hidden class
+
+when zip code is entered....
+    get and display breweries' info
+    recenter map on zip code coords
+    add markers for breweries' addresses
+    unhide map
+*/
