@@ -4,6 +4,7 @@ const favSelector = document.getElementById('fav-selector')
 const mainTitle = document.getElementById('main-title')
 const favSection = document.getElementById('fav-section')
 const favesUrl = 'http://localhost:3000/favorites'
+const container = document.querySelector('.container')
 
 let lat
 let long
@@ -129,12 +130,13 @@ const popFaveSection = (faveBrewObj) => {
     favBrewWeb.textContent = 'Visit Website'
     favBrewTitle.innerText = faveBrewObj[0].name
     favDiv.append(favBrewTitle, favBrewAddress, favBrewPhone, favBrewWeb)
-    favSection.append(favDiv)
+    container.append(favDiv)
 }
 
 
 favSelector.addEventListener('change',async(e)=>{
     let selectedFav = e.target.value
+    container.innerHTML = ''
     let val = await getData(`http://localhost:3000/favorites?name=${selectedFav}`)
     popFaveSection(val)
 })
