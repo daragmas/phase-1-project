@@ -26,6 +26,11 @@ body {
 
 #title {
   margin-top: 10rem;
+  text-align: center;
+}
+
+#description{
+  text-align: center;
 }
 
 #main-title {
