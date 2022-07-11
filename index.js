@@ -5,6 +5,7 @@ const mainTitle = document.getElementById('main-title')
 const favSection = document.getElementById('fav-section')
 const favesUrl = 'http://localhost:3000/favorites'
 const container = document.querySelector('.container')
+const mapFrame = document.querySelector('iframe')
 let lat
 let long
 let zip
@@ -20,8 +21,7 @@ const getLatLong = async (zip) => {
     const zipCodeApiUrl = `https://api.zippopotam.us/us/${zip}`
     const latAndLong = await getData(zipCodeApiUrl)
     latLong = [latAndLong.places[0].latitude, latAndLong.places[0].longitude]
-    lati = latLong[0]
-    lngG = latAndLong[1]
+    mapFrame.setAttribute('src', `https://www.google.com/maps/embed/v1/view?key=AIzaSyDej2gyib9LdZv2wQO2_6MInDwv-glcoeE&center=${latLong[0]},${latLong[1]}&zoom=12&maptype=satellite`)
     return latLong
 }
 
