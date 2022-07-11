@@ -155,3 +155,8 @@ footer {
   font-size: smaller;
 
 }
+
+#map {
+  height: 400px;
+  width: 400px;
+}

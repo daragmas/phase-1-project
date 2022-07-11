@@ -5,8 +5,6 @@ const mainTitle = document.getElementById('main-title')
 const favSection = document.getElementById('fav-section')
 const favesUrl = 'http://localhost:3000/favorites'
 const container = document.querySelector('.container')
-let key = config.SECRET_API_KEY;
-
 let lat
 let long
 let zip
@@ -57,6 +55,8 @@ const makeBrewLi = (brewery) => {
     collapsibleInfo.map((item) => {
         let key = Object.keys(item)
         let infoLi = document.createElement('li')
+        //make map element
+        //call initmap using lat long
         infoLi.textContent = `${key} : ${item[key]}`
         collapseDiv.appendChild(infoLi)
     })
@@ -141,5 +141,8 @@ favSelector.addEventListener('change',async(e)=>{
     let val = await getData(`http://localhost:3000/favorites?name=${selectedFav}`)
     popFaveSection(val)
 })
+
+
+
 
 popFavesList()
