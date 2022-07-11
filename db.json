@@ -20,6 +20,13 @@
       "phone": "9178326840",
       "url": "http://licbeerproject.com",
       "id": 4
+    },
+    {
+      "name": "Harlem Brewing Co",
+      "address": "2 W 123rd St, New York, New York",
+      "phone": "8885596735",
+      "url": "http://www.harlembrewingcompany.com",
+      "id": 5
     }
   ]
 }
