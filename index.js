@@ -5,6 +5,7 @@ const mainTitle = document.getElementById('main-title')
 const favSection = document.getElementById('fav-section')
 const favesUrl = 'http://localhost:3000/favorites'
 const container = document.querySelector('.container')
+let key = config.SECRET_API_KEY;
 
 let lat
 let long
