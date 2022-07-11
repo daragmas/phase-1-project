@@ -56,8 +56,6 @@ const makeBrewLi = (brewery) => {
     collapsibleInfo.map((item) => {
         let key = Object.keys(item)
         let infoLi = document.createElement('li')
-        //make map element
-        //call initmap using lat long
         infoLi.textContent = `${key} : ${item[key]}`
         collapseDiv.appendChild(infoLi)
     })
@@ -66,7 +64,12 @@ const makeBrewLi = (brewery) => {
     collapseBtn.addEventListener('click', () => {
         mapFrame.classList.remove('hidden')
         collapseDiv.classList.toggle('hidden')
+        if(!(collapseDiv.classList.contains('hidden'))){
+            collapseBtn.textContent = ' - '
             mapFrame.setAttribute('src', `https://www.google.com/maps/embed/v1/place?key=AIzaSyDej2gyib9LdZv2wQO2_6MInDwv-glcoeE&q=${brewery.name.replace(' ', '+')}`)
+        }
+        else{collapseBtn.textContent = ' + '}
+        
     })
     
     let faveBtn = document.createElement('ion-icon')
@@ -148,15 +151,3 @@ favSelector.addEventListener('change',async(e)=>{
 })
 
 popFavesList()
-
-
-/* 
-
-make map - hide map with hidden class
-
-when zip code is entered....
-    get and display breweries' info
-    recenter map on zip code coords
-    add markers for breweries' addresses
-    unhide map
-*/

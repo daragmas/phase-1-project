@@ -45,6 +45,8 @@ body {
   border-radius: 16px;
   background-color: transparent;
   text-align: center;
+  color:white;
+  font-weight: 500;
 }
 
 #zipcode-input::placeholder {
@@ -116,7 +118,9 @@ a:hover {
 }
 
 option {
-  background-color: transparent;
+  background-color:#1e3c56;
+  /* border-radius: 16px; */
+  color:white
 }
 
 #fav-section {
@@ -159,4 +163,9 @@ footer {
 #map {
   height: 400px;
   width: 400px;
+  margin: 0.5rem;
+}
+
+span{
+  font-size: large;
 }
