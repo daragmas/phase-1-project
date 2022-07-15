@@ -27,6 +27,20 @@
       "phone": "8885596735",
       "url": "http://www.harlembrewingcompany.com",
       "id": 5
+    },
+    {
+      "name": "Harlem Brewing Co",
+      "address": "2 W 123rd St, New York, New York",
+      "phone": "8885596735",
+      "url": "http://www.harlembrewingcompany.com",
+      "id": 6
+    },
+    {
+      "name": "Chelsea Craft Brewing Co Llc",
+      "address": "463 E 173rd St, Bronx, New York",
+      "phone": "7184848850",
+      "url": "http://www.chelseacraftbrewing.com",
+      "id": 7
     }
   ]
 }
